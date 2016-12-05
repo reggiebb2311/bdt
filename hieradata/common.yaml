@@ -1,0 +1,188 @@
+---
+# hieradata/common.yaml
+
+classes:
+    - hash_resources
+
+hash_resources::resources:
+    package:
+         ksh:
+            ensure: present    
+   
+    group:
+        informatica:
+            ensure: present
+            gid:    4300
+        sshaccess:
+            ensure: present
+            gid:    1000
+        services:
+            ensure: present
+            gid:    4303
+        users:
+            ensure: present
+            gid:    4499
+
+    user:
+       auction:
+            ensure: present
+            uid:    4400
+            gid:    4300
+            groups:
+              - services
+              - sshaccess
+            managehome: true
+
+       lacey:
+            ensure: absent
+            shell:  '/bin/bash'
+            home:  '/tmp/lacey'
+            uid:   5988
+            gid:   4300
+            system: true
+            managehome: true
+ 
+       kkollenber:
+            ensure: present
+            uid:    50078
+            gid:    4300
+            groups:
+              - services
+              - sshaccess
+            managehome: true
+
+       cdavis:
+            ensure: absent
+            uid:    50059
+            gid:    4300
+            groups:
+              - services
+              - sshaccess
+              - wheel
+            managehome: true
+
+       skamath:
+            ensure: present
+            uid:    50120
+            gid:    4300
+            groups:
+              - services
+              - sshaccess
+            managehome: true
+
+       rdebique:
+            ensure: present
+            uid:    50027
+            gid:    4300
+            groups:
+              - services
+              - sshaccess
+            managehome: true
+
+       bireporting:
+            ensure: present
+            uid:    59894
+            gid:    4300
+            managehome: true
+
+       bulkfree:
+            ensure: present
+            uid:    59906
+            gid:    4300
+            managehome: true
+
+       cdh:
+            ensure: present
+            uid:    59866
+            gid:    4300
+            managehome: true
+
+       chrome:
+            ensure: present
+            uid:    55726
+            gid:    4300
+            managehome: true
+
+       chrysler:
+            ensure: present
+            uid:    59873
+            gid:    4300
+            managehome: true
+
+       crm:
+            ensure: present
+            uid:    59875
+            gid:    4300
+            managehome: true
+
+       dataextracts:
+            ensure: present
+            uid:    59874
+            gid:    4300
+            managehome: true
+
+       mftpcin:
+            ensure: present
+            uid:    5412
+            gid:    4300
+            managehome: true
+
+       omvda:
+            ensure: present
+            uid:    5613
+            gid:    4300
+            managehome: true
+
+       ovc:
+            ensure: present
+            uid:    59889
+            gid:    4300
+            managehome: true
+
+       ovt:
+            ensure: present
+            uid:    59913
+            gid:    4300
+
+       settlement:
+            ensure: present
+            uid:    59878
+            gid:    4300
+            managehome: true
+
+       vdm:
+            ensure: present
+            uid:    59877
+            gid:    4300
+            managehome: true
+
+       debi:
+            ensure: present
+            uid:    1080
+            gid:    4300
+            managehome: true
+
+       vms:
+            ensure: present
+            uid:    50075
+            gid:    4300
+            managehome: true
+
+       informatica:
+            ensure: present
+            uid:    55791
+            gid:    4300
+            managehome: true
+
+   
+    file:
+      test:
+           ensure: directory 
+           path: /tmp/test
+           owner:  root
+           group:  wheel
+           mode:   'ug+rwx' 
+   
+    service:
+      iptables:
+           ensure: stopped
